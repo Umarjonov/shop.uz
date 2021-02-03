@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="147952da-91a9-4338-88dd-3d5ae9e2ca28" name="unired all">
+        <fileTransfer rootFolder="/var/www/" accessType="SFTP" host="192.168.202.120" port="22" sshConfigId="03206b40-180a-4c60-b1ec-b44f1b4b7cd8" sshConfig="usuliddin.u@192.168.202.120:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
