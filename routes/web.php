@@ -17,7 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::match(['get','post'],'/admin',[\App\Http\Controllers\AdminController::class,'login']);
+Route::match(['get','post'],'/admin',[App\Http\Controllers\AdminController::class,'login']);
+Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
 
 Auth::routes();
 
