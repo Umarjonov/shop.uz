@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin',[\App\Http\Controllers\AdminController::class,'login']);
+Route::match(['get','post'],'/admin',[\App\Http\Controllers\AdminController::class,'login']);
 
 Auth::routes();
 
