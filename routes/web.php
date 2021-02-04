@@ -21,6 +21,7 @@ Route::match(['get','post'],'/admin',[AdminController::class,'login']);
 Route::group(['middleware'=>['auth']],function (){
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('settings');
+    Route::get('/admin/check-pwd',[AdminController::class,'chkPassword']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
