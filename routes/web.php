@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::match(['get','post'],'/admin',[App\Http\Controllers\AdminController::class,'login']);
-Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
-Route::get('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('logout');
+Route::match(['get','post'],'/admin',[AdminController::class,'login']);
+Route::group(['middleware'=>['auth']],function (){
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
+});
+
+Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
+
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
