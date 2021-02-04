@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::match(['get','post'],'/admin',[App\Http\Controllers\AdminController::class,'login']);
 Route::get('/admin/dashboard', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboard');
+Route::get('/logout', [App\Http\Controllers\AdminController::class, 'logout'])->name('logout');
 
 Auth::routes();
 
