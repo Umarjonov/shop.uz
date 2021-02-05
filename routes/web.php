@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::group(['middleware'=>['auth']],function (){
     Route::get('/admin/settings', [AdminController::class, 'settings'])->name('settings');
     Route::get('/admin/check-pwd',[AdminController::class,'chkPassword']);
     Route::match(['get','post'],'/admin/update-pwd',[AdminController::class,'updatePassword']);
+    Route::match(['get','post'],'/admin/add-category',[CategoryController::class,'addCategory']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
