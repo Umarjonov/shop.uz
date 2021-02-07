@@ -23,6 +23,20 @@ class CategoryController extends Controller
         return view('admin.categories.add_category');
     }
 
+    public function editCategory(Request $request, $id = null)
+    {
+        if ($request->isMethod('post')){
+            $data = $request->all();
+            Category::find($id)->update([
+               'name'       =>$data['category_name'],
+               'description'=>$data['description'],
+               'url'        =>$data['url']
+            ]);
+            return redirect('/admin/view-categories')->with('flash_message_success','Category updated Successfully!');
+        }
+        $categoryDetails = Category::find($id)->first();
+        return view('admin.categories.edit_category')->with(compact('categoryDetails'));
+    }
     public function viewCategories(Request $request)
     {
         $categories = Category::get();

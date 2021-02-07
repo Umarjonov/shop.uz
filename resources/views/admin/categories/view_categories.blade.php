@@ -42,7 +42,7 @@
                                         <td>{{ $cat->id }}</td>
                                         <td>{{ $cat->name }}</td>
                                         <td>{{ $cat->url }}</td>
-                                        <td class="center"><a href="#" class="btn btn-primary btn-mini">Edit</a>
+                                        <td class="center"><a href="{{ url('/admin/edit-category/'.$cat->id) }}" class="btn btn-primary btn-mini">Edit</a>
                                             <a href="#" class="btn btn-danger btn-mini">Delete</a></td>
                                     </tr>
                                 @endforeach
