@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,8 @@ Route::group(['middleware'=>['auth']],function (){
     Route::match(['get','post'],'/admin/edit-category/{id}',[CategoryController::class,'editCategory']);
     Route::match(['get','post'],'/admin/delete-category/{id}',[CategoryController::class,'deleteCategory']);
     Route::get('/admin/view-categories',[CategoryController::class,'viewCategories']);
+
+    Route::match(['get','post'],'/admin/add-product',[ProductController::class,'addProduct']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
