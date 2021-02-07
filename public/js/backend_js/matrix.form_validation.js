@@ -102,6 +102,13 @@ $(document).ready(function(){
 		}
 	});
 
+    $("#delcat").click(function () {
+        if (confirm("Siz rostdan ham bu Categoriyani o`chirmoqchimisiz?")){
+            return true;
+        }
+        return false;
+    });
+
 	$("#number_validate").validate({
 		rules:{
 			min:{

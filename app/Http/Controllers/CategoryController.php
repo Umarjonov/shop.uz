@@ -37,6 +37,15 @@ class CategoryController extends Controller
         $categoryDetails = Category::find($id)->first();
         return view('admin.categories.edit_category')->with(compact('categoryDetails'));
     }
+
+    public function deleteCategory($id = null)
+    {
+        if (!empty($id)){
+            Category::find($id)->delete();
+            return redirect()->back()->with('flash_message_success','Category deleted Successfully!');
+        }
+    }
+
     public function viewCategories(Request $request)
     {
         $categories = Category::get();

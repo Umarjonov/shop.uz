@@ -27,6 +27,7 @@ Route::group(['middleware'=>['auth']],function (){
 
     Route::match(['get','post'],'/admin/add-category',[CategoryController::class,'addCategory']);
     Route::match(['get','post'],'/admin/edit-category/{id}',[CategoryController::class,'editCategory']);
+    Route::match(['get','post'],'/admin/delete-category/{id}',[CategoryController::class,'deleteCategory']);
     Route::get('/admin/view-categories',[CategoryController::class,'viewCategories']);
 });
 
