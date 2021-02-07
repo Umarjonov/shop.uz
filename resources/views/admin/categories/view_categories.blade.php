@@ -32,6 +32,7 @@
                                 <tr>
                                     <th>Category ID</th>
                                     <th>Category Name</th>
+                                    <th>Category Level</th>
                                     <th>Category Url</th>
                                     <th>Action</th>
                                 </tr>
@@ -41,6 +42,7 @@
                                     <tr class="gradeX">
                                         <td>{{ $cat->id }}</td>
                                         <td>{{ $cat->name }}</td>
+                                        <td>{{ $cat->parent_id }}</td>
                                         <td>{{ $cat->url }}</td>
                                         <td class="center"><a href="{{ url('/admin/edit-category/'.$cat->id) }}" class="btn btn-primary btn-mini">Edit</a>
                                             <a href="{{ url('/admin/delete-category/'.$cat->id) }}" id="delcat" class="btn btn-danger btn-mini">Delete</a></td>
