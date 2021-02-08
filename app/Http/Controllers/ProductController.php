@@ -12,8 +12,25 @@ class ProductController extends Controller
 {
     public function addProduct(Request $request)
     {
+        if ($request->isMethod('post')){
+            $data = $request->all();
+            $validatedData = $request->validate([
+                'category_id'   =>  'required',
+                'product_name'  =>  'required',
+                'product_code'  =>  'required',
+                'product_color' =>  'required',
+                'description'   =>  '',
+                'price'         =>  'required',
+                'image'         =>  ''
+            ]);
+            $product = new Product();
+            $product->fill($validatedData);
+            $product->save();
+            return redirect()->back()->with('flash_message_success','Product has been added');
+
+        }
         $categories = Category::where(['parent_id'=>0])->get();
-        $categories_dropdown = "<option selected disabled>Select</option>";
+        $categories_dropdown = "<option value='' selected disabled>Select</option>";
         foreach ($categories as $cat){
             $categories_dropdown .= "<option value='".$cat->id."'>".$cat->name."</option>";
             $sub_categories = Category::where(['parent_id'=>$cat->id])->get();
