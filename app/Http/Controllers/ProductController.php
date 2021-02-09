@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         if ($request->isMethod('post')){
             $data = $request->all();
+            echo "<pre>";print_r($data);die;
             $validatedData = $request->validate([
                 'category_id'   =>  'required',
                 'product_name'  =>  'required',
