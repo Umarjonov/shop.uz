@@ -32,6 +32,7 @@ Route::group(['middleware'=>['auth']],function (){
     Route::get('/admin/view-categories',[CategoryController::class,'viewCategories']);
 
     Route::match(['get','post'],'/admin/add-product',[ProductController::class,'addProduct']);
+    Route::get('/admin/view-products',[ProductController::class,'viewProducts']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
