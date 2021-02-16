@@ -53,12 +53,34 @@
                                         <td>{{ $product->price }}</td>
                                         <td>
                                             @if(!empty($product->image))
-                                                <img src="{{ asset('/images/backend_images/products/small/'.$product->image) }}" alt="" style="width: 60px">
+                                                <img
+                                                    src="{{ asset('/images/backend_images/products/small/'.$product->image) }}"
+                                                    alt="" style="width: 60px">
                                             @endif
                                         </td>
-                                        <td class="center" style="text-align: center"><a href="{{ url('/admin/edit-product/'.$product->id) }}" class="btn btn-primary btn-mini">Edit</a>
-                                            <a href="{{ url('/admin/delete-product/'.$product->id) }}" id="delcat" class="btn btn-danger btn-mini">Delete</a></td>
+                                        <td class="center" style="text-align: center">
+                                            <a href="#productView{{ $product->id }}" data-toggle="modal" class="btn btn-success btn-mini">View</a>
+                                            <a href="{{ url('/admin/edit-product/'.$product->id) }}"
+                                               class="btn btn-primary btn-mini">Edit</a>
+                                            <a href="{{ url('/admin/delete-product/'.$product->id) }}" id="delcat"
+                                               class="btn btn-danger btn-mini">Delete</a></td>
                                     </tr>
+                                    <div id="productView{{ $product->id }}" class="modal hide">
+                                        <div class="modal-header">
+                                            <button data-dismiss="modal" class="close" type="button">×</button>
+                                            <h3>{{ $product->product_name }} Full Details</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Product ID: {{ $product->id }}</p>
+                                            <p>Category ID: {{ $product->category_id }}</p>
+                                            <p>Product Code: {{ $product->product_code }}</p>
+                                            <p>Product Color: {{ $product->product_color }}</p>
+                                            <p>Price: {{ $product->price }}</p>
+                                            <p>Fabric: </p>
+                                            <p>Material:</p>
+                                            <p>Description: {{ $product->description }}</p>
+                                        </div>
+                                    </div>
                                 @endforeach
                                 </tbody>
                             </table>
