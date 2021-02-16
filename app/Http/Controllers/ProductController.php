@@ -62,6 +62,11 @@ class ProductController extends Controller
         return view('admin.products.add_product')->with(compact('categories_dropdown'));
     }
 
+    public function editProduct(Request $request, $id=null)
+    {
+        $productDetails = Product::where(['id'=>$id])->first();
+        return view('admin.products.edit_product')->with(compact('productDetails'));
+    }
     public function viewProducts()
     {
         $products = Product::get();
