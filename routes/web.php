@@ -39,3 +39,9 @@ Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['prefix' => 'test'],function (){
+    Route::get('/nishon',function (){
+        return view('test.nishon');
+    });
+});

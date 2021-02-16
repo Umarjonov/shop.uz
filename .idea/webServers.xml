@@ -16,6 +16,13 @@
           </advancedOptions>
         </fileTransfer>
       </webServer>
+      <webServer id="554d8fb7-add8-45fb-b403-0904230e32f1" name="new unired" url="http://192.168.202.7">
+        <fileTransfer rootFolder="/html/unired" host="192.168.202.7" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
     </option>
   </component>
 </project>
