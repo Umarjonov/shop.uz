@@ -64,8 +64,42 @@ class ProductController extends Controller
 
     public function editProduct(Request $request, $id=null)
     {
+        if ($request->isMethod('post')){
+            $data = $request->all();
+            $validatedData = $request->validate([
+                'category_id'   =>  'required',
+                'product_name'  =>  'required',
+                'product_code'  =>  'required',
+                'product_color' =>  'required',
+                'description'   =>  '',
+                'price'         =>  'required'
+            ]);
+            Product::where(['id'=>$id])->update($validatedData);
+            return redirect()->back()->with('flash_message_success','Product has been updated successfull!');
+        }
         $productDetails = Product::where(['id'=>$id])->first();
-        return view('admin.products.edit_product')->with(compact('productDetails'));
+
+        $categories = Category::where(['parent_id'=>0])->get();
+        $categories_dropdown = "<option value='' selected disabled>Select</option>";
+        foreach ($categories as $cat){
+            if ( $cat->id == $productDetails->category_id ){
+                $selected = 'selected';
+            }else{
+                $selected = '';
+            }
+            $categories_dropdown .= "<option value='".$cat->id."' ".$selected.">".$cat->name."</option>";
+            $sub_categories = Category::where(['parent_id'=>$cat->id])->get();
+            foreach ($sub_categories as $sub_cat){
+                if ( $sub_cat->id == $productDetails->category_id ){
+                    $selected = 'selected';
+                }else{
+                    $selected = '';
+                }
+                $categories_dropdown .= "<option value='".$sub_cat->id."' ".$selected.">&nbsp;--&nbsp;".$sub_cat->name."</option>";
+            }
+        }
+
+        return view('admin.products.edit_product')->with(compact('productDetails','categories_dropdown'));
     }
     public function viewProducts()
     {
