@@ -15,9 +15,11 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/',[\App\Http\Controllers\IndexController::class,'index']);
 
 Route::match(['get','post'],'/admin',[AdminController::class,'login']);
 Route::group(['middleware'=>['auth'],'prefix' => 'admin'],function (){
