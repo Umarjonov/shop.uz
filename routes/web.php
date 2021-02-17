@@ -36,6 +36,9 @@ Route::group(['middleware'=>['auth'],'prefix' => 'admin'],function (){
     Route::get('/view-products',[ProductController::class,'viewProducts']);
     Route::get('/delete-product/{id}',[ProductController::class,'deleteProduct']);
     Route::get('/delete-product-image/{id}',[ProductController::class,'deleteProductImage']);
+
+    //product attribute routes
+    Route::match(['get','post'],'/add-attributes/{id}',[ProductController::class,'addAttributes']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
