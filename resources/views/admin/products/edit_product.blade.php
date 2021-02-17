@@ -72,6 +72,11 @@
                                     <label class="control-label">Image</label>
                                     <div class="controls">
                                         <input type="file" name="image" id="image">
+{{--                                        <input type="hidden" name="current_image" value="{{ $productDetails->image ?? '' }}">--}}
+                                        @if(!empty($productDetails->image))
+                                            <img style="width: 40px;" src="{{ asset('/images/backend_images/products/small/'.$productDetails->image) }}" alt=""> |
+                                            <a href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}">Delete</a>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-actions">

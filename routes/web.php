@@ -34,6 +34,7 @@ Route::group(['middleware'=>['auth']],function (){
     Route::match(['get','post'],'/admin/add-product',[ProductController::class,'addProduct']);
     Route::match(['get','post'],'/admin/edit-product/{id}',[ProductController::class,'editProduct']);
     Route::get('/admin/view-products',[ProductController::class,'viewProducts']);
+    Route::get('/admin/delete-product-image/{id}',[ProductController::class,'deleteProductImage']);
 });
 
 Route::get('/logout', [AdminController::class, 'logout'])->name('logout');
