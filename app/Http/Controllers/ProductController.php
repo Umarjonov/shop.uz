@@ -146,6 +146,8 @@ class ProductController extends Controller
 
     public function addAttributes(Request $request, $id=null)
     {
+        $productDetails = Product::findOrFail($id)->with('attributes')->first();
+//        dd($productDetails);
         if ($request->isMethod('post')){
             $data = $request->all();
             foreach ($data['sku'] as $key => $val){
@@ -161,7 +163,6 @@ class ProductController extends Controller
             }
             return redirect('/admin/add-attributes'.$id)->with('flash_message_success','Product Attributes added successfull!');
         }
-        $productDetails = Product::findOrFail($id)->first();
         return view('admin.products.add_attribute')->with(compact('productDetails'));
     }
 
