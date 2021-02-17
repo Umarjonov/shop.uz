@@ -223,7 +223,7 @@ $(document).ready(function(){
         var addButton = $('.add_button'); //Add button selector
         var wrapper = $('.field_wrapper'); //Input field wrapper
         var fieldHTML = '<div style="margin-left:180px;"><input type="text"  name="sku[]" id="sku" placeholder="SKU" style="width: 120px;margin-right: 3px;margin-top:3px;"/>' +
-            '<input type="text" ame="size[]" id="size" placeholder="size"  style="width: 120px;margin-right: 3px;margin-top:3px;"/>'+
+            '<input type="text" name="size[]" id="size" placeholder="size"  style="width: 120px;margin-right: 3px;margin-top:3px;"/>'+
             '<input type="text"  name="price[]" id="price" placeholder="price" style="width: 120px;margin-right: 3px;margin-top:3px;"/>'+
             '<input type="text"  name="stock[]" id="stock" placeholder="stock" style="width: 120px;margin-right: 3px;margin-top:3px;"/>'+
             '<a href="javascript:void(0);" class="remove_button">Remove</a></div>'; //New input field html
