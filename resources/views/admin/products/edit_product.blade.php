@@ -75,7 +75,8 @@
 {{--                                        <input type="hidden" name="current_image" value="{{ $productDetails->image ?? '' }}">--}}
                                         @if(!empty($productDetails->image))
                                             <img style="width: 40px;" src="{{ asset('/images/backend_images/products/small/'.$productDetails->image) }}" alt=""> |
-                                            <a href="{{ url('/admin/delete-product-image/'.$productDetails->id) }}">Delete</a>
+                                            <a rel="{{ $productDetails->id }}" rel1="delete-product-image"  href="javascript:"
+                                               class="btn btn-danger btn-mini deleteRecord">Delete</a>
                                         @endif
                                     </div>
                                 </div>
