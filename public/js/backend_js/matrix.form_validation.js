@@ -171,6 +171,70 @@ $(document).ready(function(){
         return false;
     });
 
+    // $("#delProduct").click(function () {
+    //     if (confirm("Siz rostdan ham bu Productni o`chirmoqchimisiz?")){
+    //         return true;
+    //     }
+    //     return false;
+    // });
+    $(document).on('click','.deleteRecord',function (e){
+       var id = $(this).attr('rel');
+       var deleteFunction = $(this).attr('rel1');
+       // alert(deleteFunction);
+        swal({
+            title: "Ishonchingiz komilmi?",
+            text: "Siz rostdan ham bu malumotni o`chirmoqchimisiz",
+            type: "warning",
+            showCancelButton: true,
+            confirmmButtonClass: "btn btn-success",
+            confirmButtonText: "Ha, o`chirilsin!",
+            cancelButtonText: "Yo`q, bekor qilinsin!",
+            cancelmmButtonClass: "btn btn-danger",
+            buttonsStyling: false,
+            reverseButtons: true
+        },
+        function (){
+            window.location.href="/admin/"+deleteFunction+"/"+id;
+        });
+
+        // swal({
+        //     title: "Ishonchingiz komilmi?",
+        //     text: "Siz rostdan ham bu malumotni ochirmoqchimisiz",
+        //     icon: 'warning',
+        //     showCancelButton: true,
+        //     confirmButtonColor: '#3085d6',
+        //     cancelButtonColor: '#d33',
+        //     confirmButtonText: "Ha, o`chirilsin!"
+        // }).then((result) => {
+        //     if (result.isConfirmed) {
+        //         swal(
+        //             'Deleted!',
+        //             'Your file has been deleted.',
+        //             'success'
+        //         )
+        //         window.location.href="/admin/"+deleteFunction+"/"+id;
+        //     }
+        // })
+
+    });
+    // Swal.fire({
+    //     title: '<strong>HTML <u>example</u></strong>',
+    //     icon: 'info',
+    //     html:
+    //         'You can use <b>bold text</b>, ' +
+    //         '<a href="//sweetalert2.github.io">links</a> ' +
+    //         'and other HTML tags',
+    //     showCloseButton: true,
+    //     showCancelButton: true,
+    //     focusConfirm: false,
+    //     confirmButtonText:
+    //         '<i class="fa fa-thumbs-up"></i> Great!',
+    //     confirmButtonAriaLabel: 'Thumbs up, great!',
+    //     cancelButtonText:
+    //         '<i class="fa fa-thumbs-down"></i>',
+    //     cancelButtonAriaLabel: 'Thumbs down'
+    // });
+
 	$("#number_validate").validate({
 		rules:{
 			min:{
